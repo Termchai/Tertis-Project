@@ -38,7 +38,7 @@ var BoardGame = cc.Node.extend
 	    //     }
 	    // }
 
-	    this.bigBlock = new BlockL(5,12,this.wh,this.WIDTH,this.HEIGHT);
+	    this.bigBlock = new BlockZ(5,12,this.wh,this.WIDTH,this.HEIGHT);
 	    this.addChild(this.bigBlock);
 
 
