@@ -9,7 +9,7 @@ var BlockZ = cc.Sprite.extend
         this.y = y;
         this.w = w;
         this.h = h;
-        this.angle=0;
+        this.angle = true;
 
         this.schedule(function(){
 		if(this.y != 1)
@@ -34,7 +34,33 @@ var BlockZ = cc.Sprite.extend
     },
     rotation: function()
     {
-    	this.angle+=90;
-    	this.setRotation(this.angle);
+    	this.angle = !this.angle;
+    	
+        if (this.angle)
+            this.setRotation(0);
+        else 
+            this.setRotation(90);
+    },
+
+    moveSide: function(direction)
+    {
+        if (this.x == 1 && direction == -1)
+        {
+
+        }
+        else if (this.x == 10 && direction == 1)
+        {
+
+        }
+        else
+        {
+            this.x+=direction;
+            this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
+        }
+        // this.b1.moveSide(direction);
+        // this.b2.moveSide(direction);
+        // this.b3.moveSide(direction);
+        // this.b4.moveSide(direction);
     }
+
 })

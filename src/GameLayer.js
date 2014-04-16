@@ -19,8 +19,10 @@ var GameLayer = cc.LayerColor.extend({
     {
         switch( e ) {
         case cc.KEY.left:
+            this.board.moveSide(-1);
             break;
         case cc.KEY.right:
+            this.board.moveSide(1);
             break;
         case cc.KEY.up:
             this.board.rotation();

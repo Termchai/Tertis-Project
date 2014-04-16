@@ -14,12 +14,13 @@
         appFiles:[
             'src/GameLayer.js',     
             'src/BoardGame.js',
-            'src/BlockMove.js',
+            'src/SmallBlock.js',
             'src/BlockL.js',
             'src/BlockI.js',
             'src/BlockSquare.js',
             'src/BlockT.js',
-            'src/BlockZ.js'
+            'src/BlockZ.js',
+            'src/BigBlock.js'
         ]
     };
 

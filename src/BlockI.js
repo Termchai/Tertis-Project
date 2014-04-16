@@ -9,7 +9,7 @@ var BlockI = cc.Sprite.extend
         this.y = y;
         this.w = w;
         this.h = h;
-        this.angle=0;
+        this.angle=true;
 
         this.schedule(function(){
 		if(this.y != 1)
@@ -22,7 +22,7 @@ var BlockI = cc.Sprite.extend
         this.b1 = new BlockMove(0,0,this.wh,this.w,this.h);
         this.b2 = new BlockMove(1,0,this.wh,this.w,this.h);
         this.b3 = new BlockMove(2,0,this.wh,this.w,this.h);
-        this.b4 = new BlockMove(3,0,this.wh,this.w,this.h);
+        this.b4 = new BlockMove(-1,0,this.wh,this.w,this.h);
 
 	    this.addChild(this.b1);
 	  	this.addChild(this.b2);
@@ -34,7 +34,11 @@ var BlockI = cc.Sprite.extend
     },
     rotation: function()
     {
-    	this.angle+=90;
-    	this.setRotation(this.angle);
+        this.angle = !this.angle;
+        
+        if (this.angle)
+            this.setRotation(0);
+        else 
+            this.setRotation(90);
     }
 })
