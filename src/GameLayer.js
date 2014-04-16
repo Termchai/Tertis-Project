@@ -28,6 +28,7 @@ var GameLayer = cc.LayerColor.extend({
             this.board.rotation();
             break;
         case cc.KEY.down:
+            this.board.moveDown();
             break;
         }
     }

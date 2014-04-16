@@ -18,8 +18,12 @@ var BigBlock = cc.Sprite.extend
 	  	this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
 
         this.schedule(function()
-        {
-            console.log(this.x + " " + this.y)
+        {this.moveDown();},1);
+    },
+
+    moveDown: function()
+    {
+        console.log(this.x + " " + this.y)
             if (this.deadBlock)
                 return;
             var check = true;
@@ -43,7 +47,7 @@ var BigBlock = cc.Sprite.extend
             if (check)
             {
                 this.y-=1;
-                this.setPosition(this.x*wh, this.y*wh);
+                this.setPosition(this.x*this.wh, this.y*this.wh);
             }
             else
             {
@@ -55,7 +59,6 @@ var BigBlock = cc.Sprite.extend
                 }
             }
 
-        },1);
     },
 
     moveSide: function(direction)
@@ -83,7 +86,23 @@ var BigBlock = cc.Sprite.extend
         }
         else if (direction == -1)
         {
+            for (var i = 0; i < 4; i++)
+            {
+                if(this.childs[i].x + this.x == 1 )
+                    check = false; 
+                for (var j = 0; j < this.smallBlocks.length; j++)
+                {
+                    if (this.childs[i].x + this.x -1 == this.smallBlocks[j].realX &&
+                        this.childs[i].y + this.y == this.smallBlocks[j].realY)
+                        check = false;
+                }
+            }
 
+            if (check)
+            {
+                this.x--;
+                this.setPosition(this.x*this.wh, this.y*this.wh);
+            }
         }
     }
 

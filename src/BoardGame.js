@@ -8,7 +8,8 @@ var BoardGame = cc.Node.extend
 	    this.HEIGHT = 17;
 	    this.setAnchorPoint( cc.p( 0, 0 ) );
 	    this.smallBlocks = [];
-	    this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
+	    // this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockSquare(),this.smallBlocks);
+	    this.randomPattern();
 	    this.addChild(this.bigBlock);
 
 	    this.schedule(function()
@@ -19,7 +20,8 @@ var BoardGame = cc.Node.extend
         		{
         			this.smallBlocks.push(this.bigBlock.childs[i]);
         		}
-        		this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
+        		// this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
+        		this.randomPattern();
         		this.addChild(this.bigBlock);
         	}
 
@@ -36,6 +38,28 @@ var BoardGame = cc.Node.extend
 	moveSide: function( direction )
 	{
 		this.bigBlock.moveSide(direction);
+	},
+
+	moveDown: function()
+	{
+		this.bigBlock.moveDown();
+	},
+
+	randomPattern: function()
+	{
+		var randomNumber = Math.floor(Math.random()*3);
+		switch(randomNumber)
+		{
+			case 0:
+			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockSquare(),this.smallBlocks);
+			break;
+			case 1:
+			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
+			break;
+			case 2:
+			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockL(),this.smallBlocks);
+			break;
+		}
 	}
 
 })
