@@ -21,25 +21,27 @@ var BlockT = cc.Sprite.extend
 
 	  	bigBlock.rotation = function()
 	  	{
-	      	if (bigBlock.pat%4 == 0)
+	      	if (bigBlock.pat%4 == 0 && bigBlock.y != 1)
 	      	{
 	      		bigBlock.b3.setPos(0,-1);
 	      	}
-	      	if (bigBlock.pat%4 == 1)
+	      	else if (bigBlock.pat%4 == 1 )
 	      	{
 	      		bigBlock.b4.setPos(-1,0);
 	      	}
-	      	if (bigBlock.pat%4 == 2)
+	      	else if (bigBlock.pat%4 == 2)
 	      	{
 	      		bigBlock.b2.setPos(0,1);
 	      	}
-	      	if (bigBlock.pat%4 == 3)
+	      	else if (bigBlock.pat%4 == 3 && bigBlock.x != 10)
 	      	{
 	      		bigBlock.b1.setPos(0, 0);
 	      		bigBlock.b2.setPos(1, 0);
 	      		bigBlock.b3.setPos(-1, 0);
 	      		bigBlock.b4.setPos(0, 1);
 	      	}
+	      	else
+	      		return;
 	      	bigBlock.pat++;
 	  	}
 	}

@@ -19,6 +19,7 @@ var BigBlock = cc.Sprite.extend
 
         this.schedule(function()
         {
+            console.log(this.x + " " + this.y)
             if (this.deadBlock)
                 return;
             var check = true;
