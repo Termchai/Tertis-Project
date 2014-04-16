@@ -55,5 +55,35 @@ var BigBlock = cc.Sprite.extend
             }
 
         },1);
+    },
+
+    moveSide: function(direction)
+    {
+        var check = true;
+        if (direction == 1)
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                if(this.childs[i].x + this.x == 10 )
+                    check = false; 
+                for (var j = 0; j < this.smallBlocks.length; j++)
+                {
+                    if (this.childs[i].x + this.x + 1 == this.smallBlocks[j].realX &&
+                        this.childs[i].y + this.y == this.smallBlocks[j].realY)
+                        check = false;
+                }
+            }
+
+            if (check)
+            {
+                this.x++;
+                this.setPosition(this.x*this.wh, this.y*this.wh);
+            }
+        }
+        else if (direction == -1)
+        {
+
+        }
     }
+
 })
