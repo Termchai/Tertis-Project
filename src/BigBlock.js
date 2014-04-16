@@ -1,6 +1,6 @@
 var BigBlock = cc.Sprite.extend
 ({
-	ctor: function(x, y, wh, w, h, pattern) 
+	ctor: function(x, y, wh, w, h, pattern, smallBlocks) 
 	{
         this._super();
         this.setAnchorPoint( cc.p( 0, 0 ) );
@@ -12,15 +12,13 @@ var BigBlock = cc.Sprite.extend
         this.angle=0;
         this.childs = new Array();
         this.deadBlock = false;
+        this.smallBlocks = smallBlocks;
 
         pattern.initBlock(this);
 	  	this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
 
         this.schedule(function()
         {
-        // if(this.y != 1)
-        //     this.y -= 1;s
-        // this.setPosition( cc.p( this.x*this.wh, this.y*this.wh ) );
             if (this.deadBlock)
                 return;
             var check = true;
@@ -28,8 +26,15 @@ var BigBlock = cc.Sprite.extend
             for (var i = 0; i < 4; i++)
             {
                 check = check && (this.y*this.wh+this.childs[i].getPositionY() > 30);
-                console.log( this.y*this.wh+this.childs[i].getPositionY())
-
+                for (var j = 0; j < 4; j++)
+                {
+                    for (var k = 0; k < this.smallBlocks.length; k++)
+                    {
+                        if (this.childs[j].x + this.x == this.smallBlocks[k].realX &&
+                            this.childs[j].y + this.y - 1 == this.smallBlocks[k].realY)
+                            check = false;
+                    }
+                }
             }
 
             console.log(check);
@@ -42,6 +47,11 @@ var BigBlock = cc.Sprite.extend
             else
             {
                 this.deadBlock = true;
+                for (var i = 0; i < 4; i++)
+                {
+                    this.childs[i].realX = this.x+this.childs[i].x;
+                    this.childs[i].realY = this.y+this.childs[i].y;
+                }
             }
 
         },1);

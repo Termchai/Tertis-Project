@@ -7,16 +7,23 @@ var BoardGame = cc.Node.extend
 	    this.WIDTH = 10;
 	    this.HEIGHT = 17;
 	    this.setAnchorPoint( cc.p( 0, 0 ) );
-	    this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT());
+	    this.smallBlocks = [];
+	    this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
 	    this.addChild(this.bigBlock);
 
 	    this.schedule(function()
         {
         	if (this.bigBlock.deadBlock)
         	{
-        		this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT());
+        		for (var i=0; i<4; i++)
+        		{
+        			this.smallBlocks.push(this.bigBlock.childs[i]);
+        		}
+        		this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
         		this.addChild(this.bigBlock);
         	}
+
+        	console.log(this.smallBlocks.toString())
         },1);
 
 	},
