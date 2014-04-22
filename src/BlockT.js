@@ -2,7 +2,7 @@ var BlockT = cc.Sprite.extend
 ({
 	initBlock: function (bigBlock)
 	{
-		bigBlock.pat = 0;
+		bigBlock.pat = 12;
 
 		bigBlock.b1 = new SmallBlock(0,0,bigBlock.wh,bigBlock.w,bigBlock.h);
         bigBlock.b2 = new SmallBlock(1,0,bigBlock.wh,bigBlock.w,bigBlock.h);
@@ -21,19 +21,20 @@ var BlockT = cc.Sprite.extend
 
 	  	bigBlock.rotation = function()
 	  	{
-	      	if (bigBlock.pat%4 == 0 && bigBlock.y != 1)
+	      	if (bigBlock.pat%4 == 0 && bigBlock.y != 1 && bigBlock.checkSmallBlock(0,-1))
 	      	{
 	      		bigBlock.b3.setPos(0,-1);
 	      	}
-	      	else if (bigBlock.pat%4 == 1 && bigBlock.x != 1)
+	      	else if (bigBlock.pat%4 == 1 && bigBlock.x != 1 && bigBlock.checkSmallBlock(-1,0))
 	      	{
 	      		bigBlock.b4.setPos(-1,0);
 	      	}
-	      	else if (bigBlock.pat%4 == 2)
+	      	else if (bigBlock.pat%4 == 2 && bigBlock.checkSmallBlock(0,1))
 	      	{
 	      		bigBlock.b2.setPos(0,1);
 	      	}
-	      	else if (bigBlock.pat%4 == 3 && bigBlock.x != 10)
+	      	else if (bigBlock.pat%4 == 3 && bigBlock.x != 10 && bigBlock.checkSmallBlock(0, 0) && 
+	      		bigBlock.checkSmallBlock(-1,0) && bigBlock.checkSmallBlock(1,0) && bigBlock.checkSmallBlock(0, 1))
 	      	{
 	      		bigBlock.b1.setPos(0, 0);
 	      		bigBlock.b2.setPos(1, 0);

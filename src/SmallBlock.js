@@ -22,7 +22,7 @@ var SmallBlock = cc.Sprite.extend
 
     dropDown: function()
     {
-        this.y = this.y-1;
+        this.y--;;
         this.realY--;
         this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
     },

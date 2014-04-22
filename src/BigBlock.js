@@ -65,15 +65,9 @@ var BigBlock = cc.Sprite.extend
                 }
             }
 
-            if (!check)
-            {
-                this.deadBlock = true;
-                for (var i = 0; i < 4; i++)
-                {
-                    this.childs[i].realX = this.x+this.childs[i].x;
-                    this.childs[i].realY = this.y+this.childs[i].y;
-                }
-            }
+
+            setTimeout (this.makeDeadBLock(this.childs,check) ,1000);
+
 
     },
 
@@ -120,6 +114,30 @@ var BigBlock = cc.Sprite.extend
                 this.setPosition(this.x*this.wh, this.y*this.wh);
             }
         }
+    },
+
+    makeDeadBLock: function(childs,check)
+    {
+        if (!check)
+        {
+            this.deadBlock = true;
+            for (var i = 0; i < 4; i++)
+            {
+                childs[i].realX = this.x + childs[i].x;
+                childs[i].realY = this.y + childs[i].y;
+            }
+        }
+    },
+
+    checkSmallBlock: function(x,y)
+    {
+        for (var i=0; i<this.smallBlocks.length; i++)
+        {
+            if (this.smallBlocks[i].realY == this.y+y &&
+                this.smallBlocks[i].realX == this.x+x)
+                return false;
+        }
+        return true;
     }
 
 })

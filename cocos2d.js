@@ -20,7 +20,9 @@
             'src/BlockSquare.js',
             'src/BlockT.js',
             'src/BlockZ.js',
-            'src/BigBlock.js'
+            'src/BlockZF.js',
+            'src/BigBlock.js',
+            'src/BlockLF.js'
         ]
     };
 
