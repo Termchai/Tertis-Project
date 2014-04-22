@@ -20,6 +20,13 @@ var SmallBlock = cc.Sprite.extend
         this.setPosition(cc.p(x*this.wh, y*this.wh));
     },
 
+    dropDown: function()
+    {
+        this.y = this.y-1;
+        this.realY--;
+        this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
+    },
+
     // checkMoveDown: function ()
     // {
     //     if (this.getPositionY() >= 0)

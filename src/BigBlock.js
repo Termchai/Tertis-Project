@@ -17,13 +17,12 @@ var BigBlock = cc.Sprite.extend
         pattern.initBlock(this);
 	  	this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
 
-        this.schedule(function()
-        {this.moveDown();},1);
+        this.schedule(this.moveDown,1);
     },
 
     moveDown: function()
     {
-        console.log(this.x + " " + this.y)
+        // console.log(this.x + " " + this.y)
             if (this.deadBlock)
                 return;
             var check = true;
@@ -42,14 +41,31 @@ var BigBlock = cc.Sprite.extend
                 }
             }
 
-            console.log(check);
+            // console.log(check);
 
             if (check)
             {
                 this.y-=1;
                 this.setPosition(this.x*this.wh, this.y*this.wh);
+                this.getScheduler().unscheduleAllCallbacksForTarget(this);
+                this.schedule(this.moveDown,1);
             }
-            else
+
+            for (var i = 0; i < 4; i++)
+            {
+                check = check && (this.y*this.wh+this.childs[i].getPositionY() > 30);
+                for (var j = 0; j < 4; j++)
+                {
+                    for (var k = 0; k < this.smallBlocks.length; k++)
+                    {
+                        if (this.childs[j].x + this.x == this.smallBlocks[k].realX &&
+                            this.childs[j].y + this.y - 1 == this.smallBlocks[k].realY)
+                            check = false;
+                    }
+                }
+            }
+
+            if (!check)
             {
                 this.deadBlock = true;
                 for (var i = 0; i < 4; i++)
