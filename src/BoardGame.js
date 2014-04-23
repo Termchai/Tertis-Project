@@ -15,6 +15,13 @@ var BoardGame = cc.Node.extend
 	    this.nextBlock.isMoving = false;
 	    this.nextBlock.setPosition(cc.p(400, 350));
 	    this.randomPattern(Math.floor(Math.random()*7));
+	    this.score = 0;
+
+	    this.scoreLabel = cc.LabelTTF.create( '0', 'Arial', 25 );
+        this.scoreLabel.setPosition( new cc.Point( 420, 300 ) );
+        this.scoreLabel.setColor( new cc.Color3B( 50, 205, 50) );
+        this.addChild( this.scoreLabel , 4);
+        this.scoreLabel.setString(this.score);
 
 	    this.addChild(this.bigBlock);
 	    this.addChild(this.nextBlock);
@@ -45,6 +52,8 @@ var BoardGame = cc.Node.extend
         			// console.log(i);
         			if (checkArray[i] == this.WIDTH)
         			{
+        				this.score++;
+        				this.scoreLabel.setString(this.score);
         				for (var j = 0; j<this.smallBlocks.length; j++)
         				{
         					if(this.smallBlocks[j].realY == i)
