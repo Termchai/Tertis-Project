@@ -138,9 +138,25 @@ var BigBlock = cc.Sprite.extend
         {
             if (this.smallBlocks[i].realY == this.y+y &&
                 this.smallBlocks[i].realX == this.x+x)
-                return false;
+                {
+                    return false;
+                }
         }
         return true;
+    },
+
+    checkEndGame: function()
+    {
+        for(var i = 0; i < this.childs.length; i++)
+        {
+            var X = this.childs[i].x;
+            var Y = this.childs[i].y;
+            if (!this.checkSmallBlock(X,Y))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 })

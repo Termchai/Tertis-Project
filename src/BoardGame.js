@@ -87,6 +87,16 @@ var BoardGame = cc.Node.extend
 
         		this.addChild(this.nextBlock);
         		this.addChild(this.bigBlock);
+
+        		if (this.bigBlock.checkEndGame())
+        		{
+        			this.bigBlock.isMoving = false;
+        			var cf = confirm("Game Over. Play agian?" );
+        				setTimeout( function() 
+        			{
+            			if( cf ) location.reload();
+        			} , 1500);
+        		}
         	}
 
         	// console.log(this.smallBlocks.toString())
@@ -119,31 +129,31 @@ var BoardGame = cc.Node.extend
 		switch(randomNumber)
 		{
 			case 0:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockSquare(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockSquare(),this.smallBlocks);
 			break;
 
 			case 1:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockT(),this.smallBlocks);
 			break;
 
 			case 2:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockL(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockL(),this.smallBlocks);
 			break;
 
 			case 3:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockLF(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockLF(),this.smallBlocks);
 			break;
 
 			case 4:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockZ(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockZ(),this.smallBlocks);
 			break;
 
 			case 5:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockZF(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,14,this.wh,this.WIDTH,this.HEIGHT,new BlockZF(),this.smallBlocks);
 			break;
 
 			case 6:
-			this.bigBlock = new BigBlock(5,12,this.wh,this.WIDTH,this.HEIGHT,new BlockI(),this.smallBlocks);
+			this.bigBlock = new BigBlock(5,13,this.wh,this.WIDTH,this.HEIGHT,new BlockI(),this.smallBlocks);
 			break;
 		}
 	}
