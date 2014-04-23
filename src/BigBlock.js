@@ -13,6 +13,7 @@ var BigBlock = cc.Sprite.extend
         this.childs = new Array();
         this.deadBlock = false;
         this.smallBlocks = smallBlocks;
+        this.isMoving = true;
 
         pattern.initBlock(this);
 	  	this.setPosition(cc.p(this.x*this.wh, this.y*this.wh));
@@ -21,7 +22,9 @@ var BigBlock = cc.Sprite.extend
     },
 
     moveDown: function()
-    {
+    {   
+        if (!this.isMoving)
+            return ;
         // console.log(this.x + " " + this.y)
             if (this.deadBlock)
                 return;
