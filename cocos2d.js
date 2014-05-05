@@ -13,7 +13,8 @@
         //SingleEngineFile:'',
         appFiles:[
             'src/GameLayer.js',     
-            'src/BoardGame.js',
+            'src/SinglePlayer/BoardGame.js',
+            'src/Co-op/BoardGameCo-op.js',
             'src/SmallBlock.js',
             'src/BlockL.js',
             'src/BlockI.js',

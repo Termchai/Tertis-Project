@@ -1,9 +1,9 @@
 var SmallBlock = cc.Sprite.extend
 ({
-	ctor: function(x, y, wh, w, h) 
+	ctor: function(x, y, wh, w, h, color) 
 	{
         this._super();
-        this.initWithFile( 'src/Images/Block.png' );
+        this.initWithFile(color);
         this.setAnchorPoint( cc.p( 0, 0 ) );
         this.wh = wh;
         this.x = x;

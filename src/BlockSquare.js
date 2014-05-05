@@ -4,10 +4,10 @@ var BlockSquare = cc.Sprite.extend
 	{
 		bigBlock.pat = 0;
 
-		bigBlock.b1 = new SmallBlock(0,0,bigBlock.wh,bigBlock.w,bigBlock.h);
-        bigBlock.b2 = new SmallBlock(1, 0,bigBlock.wh,bigBlock.w,bigBlock.h);
-        bigBlock.b3 = new SmallBlock(1,1,bigBlock.wh,bigBlock.w,bigBlock.h);
-        bigBlock.b4 = new SmallBlock(0,1,bigBlock.wh,bigBlock.w,bigBlock.h);
+		bigBlock.b1 = new SmallBlock(0,0,bigBlock.wh,bigBlock.w,bigBlock.h,bigBlock.color);
+        bigBlock.b2 = new SmallBlock(1, 0,bigBlock.wh,bigBlock.w,bigBlock.h,bigBlock.color);
+        bigBlock.b3 = new SmallBlock(1,1,bigBlock.wh,bigBlock.w,bigBlock.h,bigBlock.color);
+        bigBlock.b4 = new SmallBlock(0,1,bigBlock.wh,bigBlock.w,bigBlock.h,bigBlock.color);
 
 	    bigBlock.addChild(bigBlock.b1);
 	  	bigBlock.addChild(bigBlock.b2);
