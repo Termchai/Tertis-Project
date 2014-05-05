@@ -33,7 +33,7 @@ var BoardGameCoop = cc.Node.extend
 
         this.score = 0; 
 	    this.scoreLabel = cc.LabelTTF.create( '0', 'Arial', 25 );
-        this.scoreLabel.setPosition( new cc.Point( 520, 275 ) );
+        this.scoreLabel.setPosition( new cc.Point( 300, 512 ) );
         this.scoreLabel.setColor( new cc.Color3B( 50, 205, 50) );
         this.addChild( this.scoreLabel , 4);
         this.scoreLabel.setString(this.score);
@@ -50,7 +50,7 @@ var BoardGameCoop = cc.Node.extend
         {
         	if (this.bigBlock.deadBlock)
         	{
-
+                cc.AudioEngine.getInstance().playEffect( 'src/Sound/Laser.wav' );
         		for (var i=0; i<4; i++)
         		{
         			this.smallBlocks.push(this.bigBlock.childs[i]);
@@ -131,14 +131,14 @@ var BoardGameCoop = cc.Node.extend
         	}
 
         	// console.log(this.smallBlocks.toString())
-        },1);
+        },0.5);
 
 
         this.schedule(function()
         {
             if (this.bigBlock2.deadBlock)
             {
-
+                cc.AudioEngine.getInstance().playEffect( 'src/Sound/Laser.wav' );
                 for (var i=0; i<4; i++)
                 {
                     this.smallBlocks.push(this.bigBlock2.childs[i]);
@@ -219,7 +219,7 @@ var BoardGameCoop = cc.Node.extend
             }
 
             // console.log(this.smallBlocks.toString())
-        },1);
+        },0.5);
 
 	},
 

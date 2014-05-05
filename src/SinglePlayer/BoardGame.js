@@ -13,13 +13,13 @@ var BoardGame = cc.Node.extend
 	    this.randomPattern(this.randomNumberNextBlock);
 	    this.nextBlock = this.bigBlock;
 	    this.nextBlock.isMoving = false;
-	    this.nextBlock.setPosition(cc.p(400, 350));
+	    this.nextBlock.setPosition(cc.p(445, 380));
 	    this.randomPattern(Math.floor(Math.random()*7));
 	    this.score = 0; 
 
 
 	    this.scoreLabel = cc.LabelTTF.create( '0', 'Arial', 25 );
-        this.scoreLabel.setPosition( new cc.Point( 420, 300 ) );
+        this.scoreLabel.setPosition( new cc.Point( 250, 512 ) );
         this.scoreLabel.setColor( new cc.Color3B( 50, 205, 50) );
         this.addChild( this.scoreLabel , 4);
         this.scoreLabel.setString(this.score);
@@ -31,6 +31,7 @@ var BoardGame = cc.Node.extend
         {
         	if (this.bigBlock.deadBlock)
         	{
+                cc.AudioEngine.getInstance().playEffect( 'src/Sound/Laser.wav' );
 
         		for (var i=0; i<4; i++)
         		{
@@ -53,6 +54,7 @@ var BoardGame = cc.Node.extend
         			// console.log(i);
         			if (checkArray[i] == this.WIDTH)
         			{
+
         				this.score++;
         				this.scoreLabel.setString(this.score);
         				for (var j = 0; j<this.smallBlocks.length; j++)
@@ -91,7 +93,7 @@ var BoardGame = cc.Node.extend
         		this.randomNumberNextBlock = Math.floor(Math.random()*7);
         		this.randomPattern(this.randomNumberNextBlock);
         		this.nextBlock = this.bigBlock;
-        		this.nextBlock.setPosition(cc.p(400, 350));
+        		this.nextBlock.setPosition(cc.p(445, 380));
         		this.nextBlock.isMoving = false;
         		this.randomPattern(temp);
 
@@ -110,7 +112,7 @@ var BoardGame = cc.Node.extend
         	}
 
         	// console.log(this.smallBlocks.toString())
-        },1);
+        },0.5);
 
 	},
 

@@ -4,6 +4,7 @@ var GameLayer = cc.LayerColor.extend({
         this.setPosition( new cc.Point( 0, 0 ) );
         this.setKeyboardEnabled( true );
 
+        cc.AudioEngine.getInstance().playMusic( 'src/sound/Original Tetris Theme - Extended 10min (Nintendo) - YouTube.mp3', true );
         var coop = confirm("Co-op?" );
         if(coop)
             this.initCoop();
@@ -51,7 +52,7 @@ var GameLayer = cc.LayerColor.extend({
 
     initSingle: function()
     {
-        var bg = cc.Sprite.create( 'src/Images/BG.png' );
+        var bg = cc.Sprite.create( 'src/Images/BG2.png' );
         bg.setAnchorPoint( cc.p( 0, 0 ) );
         bg.setPosition(0,0);
         this.addChild( bg );
