@@ -159,6 +159,9 @@ var BigBlock = cc.Sprite.extend
     {
         if(!this.checkFrame(x,y))
             return false; 
+        if (!this.checkOtherBlock(x,y))
+            return false;
+
         for (var i=0; i<this.smallBlocks.length; i++)
         {
             if ((this.smallBlocks[i].realY == this.y+y &&
@@ -204,12 +207,27 @@ var BigBlock = cc.Sprite.extend
         {
             var X = this.childs[i].x;
             var Y = this.childs[i].y;
-            if (!this.checkSmallBlock(X,Y))
+            if (!this.checkSmallBlock(X,Y) && this.checkOtherBlock(X,Y) == true )
             {
                 return true;
             }
         }
         return false;
+    },
+
+    checkOtherBlock: function(x,y)
+    {
+        if (this.anotherBlock != null)
+        {
+            for (var j=0; j<4; j++)
+            {
+                var anotherX = this.anotherBlock.childs[j].x + this.anotherBlock.x;
+                var anotherY = this.anotherBlock.childs[j].y + this.anotherBlock.y;
+                if( this.x + x == anotherX && this.y + y == anotherY )
+                    return false;
+            }
+        }
+        return true;
     }
 
 })
